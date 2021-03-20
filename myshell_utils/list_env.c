@@ -46,11 +46,11 @@ void fill_list(char **var,t_minishell *shell)
 		else
 			shell->shell = add_end(&shell->shell,var[0],var[1], sizeof(char *));
 }
-void delete_elem(char *elm,t_minishell **shell_)
+void delete_elem(char *elm,t_minishell *shell_)
 {
 	t_element *list;
 	t_element *p;
-	list = (*shell_)->shell;
+	list = (shell_)->shell;
 	if(list == NULL)
 		return;
 
@@ -66,8 +66,30 @@ void delete_elem(char *elm,t_minishell **shell_)
 		list = list->next;
 	}
 }
-
-/* int main(int argc,char **argv,char **env)
+void sort_l(t_minishell *shell_)
+{
+	t_element *ptr;
+	char * temp;
+	char * temp2;
+for( ptr = (shell_)->shell; ptr; ptr = ptr->next)
+{
+   for(t_element *ptr2 = ptr->next; ptr2; ptr2 = ptr2->next)
+   {
+       //if ptr2 is less then ptr, 
+       if(strcmp(ptr->obj1 , ptr2->obj1) > 0)
+       {
+          //then swap ptr and ptr2
+          temp = ptr->obj1;
+          temp2 = ptr->obj2;
+          ptr->obj1 = ptr2->obj1;
+          ptr->obj2 = ptr2->obj2;
+          ptr2->obj1 = temp;
+          ptr2->obj2 = temp2;
+       }
+   }
+}
+}
+int main(int argc,char **argv,char **env)
 {
     t_element *p;
 	t_minishell shell_;
@@ -75,12 +97,20 @@ void delete_elem(char *elm,t_minishell **shell_)
 	shell_.shell = NULL;
 	
 	char *str = env_(&shell_);
-	if(strcmp(argv[1] ,"1")==0)
-		delete_elem("_",&shell_);
+	char **var;
+        while(*shell_.enviroment)
+        {
+        	var =ft_split(*shell_.enviroment,'=');
+            shell_.enviroment++;
+        	fill_list(var,&shell_);
+        }
+	// if(strcmp(argv[1] ,"1")==0)
+	 	// delete_elem("_",&shell_);
+	sort_l(&shell_);
     p = shell_.shell;
     while (p != NULL)
     {
-		printf("%s=%s\n", p->obj1,p->obj2);
+		printf("declare -x %s=%s\n", p->obj1,p->obj2);
 		p = p->next;
 	}
-} */
+}

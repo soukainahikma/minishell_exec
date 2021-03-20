@@ -44,5 +44,5 @@ void fill_list(char **var,t_minishell *shell);
 t_element	*create_list(void *elt1,void *elt2, size_t data_size);
 t_element	*add_end(t_element **liste, void *elt1,void *elt2, size_t data_size);
 void ft_putstr(char *str,int fd);
-void delete_elem(char *elm,t_minishell **shell_);
+void delete_elem(char *elm,t_minishell *shell_);
 #endif
