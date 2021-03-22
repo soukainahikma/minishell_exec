@@ -2,6 +2,6 @@
 
 char *unset(t_minishell *shell)
 {
-    delete_elem("_",&shell);
+    delete_elem("_",shell);
     return("");
 }

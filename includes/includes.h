@@ -34,7 +34,7 @@ char *ft_system(t_minishell *shell);
 char *echo(t_minishell *shell);
 char *pwd(t_minishell *shell);
 char *cd(t_minishell *shell);
-char *export(t_minishell *shell);
+char *export_(t_minishell *shell);
 char *unset(t_minishell *shell);
 char *env_(t_minishell *shell);
 char *exit_(t_minishell *shell);
@@ -45,4 +45,6 @@ t_element	*create_list(void *elt1,void *elt2, size_t data_size);
 t_element	*add_end(t_element **liste, void *elt1,void *elt2, size_t data_size);
 void ft_putstr(char *str,int fd);
 void delete_elem(char *elm,t_minishell *shell_);
+void sort_l(t_element *list);
+void filling(t_element **p,t_element *list);
 #endif

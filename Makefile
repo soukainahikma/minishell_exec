@@ -15,6 +15,7 @@ SRC  =	myshell/main.c\
 		myshell_utils/list_env.c\
 		myshell_utils/ft_split.c\
 		myshell_utils/ft_putstr.c\
+		myshell_utils/fill_list_to_sort.c\
 		\
 		get_next_line/get_next_line_utils_bonus.c\
 		get_next_line/get_next_line_bonus.c\

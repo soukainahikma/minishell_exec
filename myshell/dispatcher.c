@@ -18,7 +18,7 @@ void fill_dispatcher(t_minishell shell)
 		command[2] = pwd;
 		command[1] = echo;
 		command[3] = cd;
-		command[4] = export;
+		command[4] = export_;
 		command[5] = unset;
 		command[6] = env_;
 		command[7] = exit_;
