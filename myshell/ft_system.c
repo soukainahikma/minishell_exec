@@ -10,9 +10,16 @@ char	*ft_system(t_minishell *shell)
 		wait(NULL);
 	else
 	{
-		binary_path = "/bin/ls";
-		char *const argv[] = {binary_path, NULL};
-		int a = execve(binary_path, argv, NULL);
+		binary_path = "/usr/bin/top";
+		char *const argv[] = {binary_path,NULL};
+		int i = 0;
+	//	while(shell->enviroment[i])
+	//	{
+	//		printf("%s\n",shell->enviroment[i]);
+	//		i++;
+	//	}
+	//	printf("++++\n");
+		int a = execve(binary_path, argv, shell->enviroment);
 		printf("%d\n",a);
 	}
 	return ("");

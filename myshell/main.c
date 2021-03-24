@@ -15,6 +15,7 @@ int main(int argc, char *argv[], char **env)
 //	signal(SIGQUIT, SIG_IGN);
 /* execution *********************************************/
 	rest = 1;
+	int i = 0;
 	while (rest == 1)
 	{
 		rest = get_next_line(0, &command);
@@ -26,10 +27,10 @@ int main(int argc, char *argv[], char **env)
 			return(0);
 		}
         char **var;
-        while(*shell.enviroment)
+        while(shell.enviroment[i])
         {
-        	var =ft_split(*shell.enviroment,'=');
-            shell.enviroment++;
+        	var =ft_split(shell.enviroment[i],'=');
+            i++;
         	fill_list(var,&shell);
         }
 		fill_dispatcher(shell);

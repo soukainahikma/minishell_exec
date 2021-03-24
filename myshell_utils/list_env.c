@@ -46,14 +46,14 @@ void fill_list(char **var,t_minishell *shell)
 		else
 			shell->shell = add_end(&shell->shell,var[0],var[1], sizeof(char *));
 }
-void delete_elem(char *elm,t_minishell *shell_)
+void delete_elem(char *elm,t_element *shell_)
 {
 	t_element *list;
 	t_element *p;
-	list = (shell_)->shell;
+
+	list = shell_;
 	if(list == NULL)
 		return;
-
 	while(list->next)
 	{
 		if(strcmp(list->next->obj1,elm) == 0)

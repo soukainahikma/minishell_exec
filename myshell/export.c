@@ -8,7 +8,7 @@ char *export_(t_minishell *shell_)
 	sort_l(p);
 	while (p != NULL)
 	{
-		printf("declare -x %s=%s\n", p->obj1,p->obj2);
+		printf("declare -x %s=\"%s\"\n", p->obj1,p->obj2);
 		p = p->next;
 	}
 	return("");
