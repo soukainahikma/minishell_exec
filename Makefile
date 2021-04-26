@@ -1,41 +1,25 @@
-NAME = minishell.a
+NAME = minishell
 AR = ar rcs
-FLAGS = 
-SRC  =	myshell/main.c\
-		myshell/dispatcher.c\
-		myshell/env.c\
-		myshell/ft_system.c\
-		myshell/echo.c\
-		myshell/pwd.c\
-		myshell/cd.c\
-		myshell/export.c\
-		myshell/unset.c\
-		myshell/exit.c\
-		\
-		myshell_utils/list_env.c\
-		myshell_utils/ft_split.c\
-		myshell_utils/ft_putstr.c\
-		myshell_utils/fill_list_to_sort.c\
-		\
-		get_next_line/get_next_line_utils_bonus.c\
-		get_next_line/get_next_line_bonus.c\
 
+PARSE = ./minishell_parse
+EXEC = ./minishell_exec
 
-HEADERS = ./includes/
-OBJECT = $(SRC:.c=.o)
+$(NAME): 
+	@make -sC $(PARSE)
+	@make -sC $(EXEC)
+	@mv ./minishell_parse/libft.a .
+	@mv ./minishell_parse/minishell_parse.a .
+	@mv ./minishell_exec/minishell_exec.a .
+	@gcc $(FLAGS) minishell_exec.a minishell_parse.a libft.a -o $(NAME)
+	@rm *.a
+	
 
-$(NAME): $(OBJECT)
-	@$(AR) $(NAME) $(OBJECT)
-	@gcc $(FLAGS) minishell.a -o miniSHELL
-
-%.o: %.c
-	@gcc $(FLAGS) -I $(HEADERS) -D BUFFER_SIZE=1  -o $@ -c $<
 
 all: $(NAME) 
 	
 clean:
-	@rm -f $(OBJECT)
-	@rm -f miniSHELL
+	@make clean -sC $(PARSE)
+	@make clean -sC $(EXEC)
 
 fclean: clean
 	@rm -f $(NAME)
